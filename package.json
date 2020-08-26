@@ -1,11 +1,11 @@
 {
   "name": "webgazertest",
   "version": "1.0.0",
-  "description": "",
+  "description": "Test de la libreria WebGazerTest",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "node index.js"
   },
-  "author": "",
+  "author": "Antony Fagundez",
   "license": "ISC"
 }
