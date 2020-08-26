@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Gazer Js</title>
+    <style>
+        .contenedor {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .contenedor > div {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="arriba-izquierda"></div>
+        <div class="arriba-derecha"></div>
+        <div class="abajo-izquierda"></div>
+        <div class="abajo-derecha"></div>
+    </div>
+    <script src="/webgazer.js" type="text/javascript" ></script>
+
+    <script>
+        const arribaIzquierda = document.querySelector('.arriba-izquierda');
+        const arribaDerecha = document.querySelector('.arriba-derecha')
+        const abajoIzquierda = document.querySelector('.abajo-izquierda')
+        const abajoDerecha = document.querySelector('.abajo-derecha')
+
+        webgazer.setGazeListener(function(data, elapsedTime){
+
+            if(data == null){
+                return;
+            }
+
+            arribaIzquierda.style.backgroundColor = 'white';
+            arribaDerecha.style.backgroundColor = 'white';
+            abajoIzquierda.style.backgroundColor = 'white';
+            abajoDerecha.style.backgroundColor = 'white';
+
+
+            if(data.x < window.innerWidth / 2 && data.y < window.innerHeight / 2){
+                arribaIzquierda.style.backgroundColor = 'tomato';
+            }
+
+            if(data.x > window.innerWidth / 2 && data.y < window.innerHeight / 2){
+                arribaDerecha.style.backgroundColor = 'tomato';
+            }
+
+            if(data.x < window.innerWidth / 2 && data.y > window.innerHeight / 2){
+                abajoIzquierda.style.backgroundColor = 'tomato';
+            }
+
+            if(data.x > window.innerWidth / 2 && data.y > window.innerHeight / 2){
+                abajoDerecha.style.backgroundColor = 'tomato';
+            }
+
+
+        }).begin();
+
+    </script>
+</body>
+</html>
